@@ -162,7 +162,7 @@ Multicast only: 1532299361334
 In h3 xterm:
 
 ```
-o# node client
+# node client
 Loading clock feed.
 Bootstrapping off of TCP, then switching to multicast-only...
 Key: b2688ce718d932d7a7f279a3fc68df19b15be5aad3a9d62a8ddb47298e705bf8
