@@ -1,0 +1,20 @@
+{
+  "name": "mininet-multicast-hyperclock-demo",
+  "version": "0.0.1",
+  "description": "Demo of hypercore-protocol over multicast in mininet",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Jim Pick (@jimpick)",
+  "license": "MIT",
+  "dependencies": {
+    "dat-swarm-defaults": "^1.0.1",
+    "discovery-swarm": "^5.1.2",
+    "duplexify": "^3.6.0",
+    "hyperclock": "^1.0.0",
+    "hypercore-crypto": "^1.0.0",
+    "hypercore-multicast-swarm": "^1.0.0",
+    "hypercore-protocol-proxy": "^1.1.0",
+    "random-access-memory": "^3.0.0"
+  }
+}
