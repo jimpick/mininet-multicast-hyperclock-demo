@@ -4,7 +4,7 @@ const ram = require('random-access-memory')
 const swarmDefaults = require('dat-swarm-defaults')
 const discSwarm = require('discovery-swarm')
 
-const clock = hyperclock(ram, {interval: 5000})
+const clock = hyperclock(ram, {interval: 1000})
 
 clock.ready(() => {
   fs.writeFileSync('./key', clock.key)
@@ -19,7 +19,7 @@ clock.ready(() => {
     live: true,
     hash: false,
     dns: {
-      server: null, domain: 'dat.local'
+      server: ['192.168.1.1'], domain: 'dat.local'
     },
     stream: () => clock.replicate({live: true})
   }))

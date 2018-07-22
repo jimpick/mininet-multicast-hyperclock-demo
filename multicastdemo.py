@@ -33,7 +33,9 @@ from mininet.net import Mininet
 from mininet.node import Node
 from mininet.log import setLogLevel, info
 from mininet.cli import CLI
+import os
 
+print 'PATH', os.environ['PATH']
 
 class LinuxRouter( Node ):
     "A Node with IP forwarding enabled."
@@ -54,10 +56,15 @@ class LinuxRouter( Node ):
                   'add r0-eth2 239.0.0.2 r0-eth1 r0-eth3' )
         self.cmd( '/opt/smcroute/sbin/smcroutectl -I smcroute-r0 '
                   'add r0-eth3 239.0.0.3 r0-eth1 r0-eth2' )
+        self.cmd( 'npx dns-discovery listen &' )
+        self.dnsDiscoveryPid = int( self.cmd( 'echo $!' ) )
+        info( '\ndns-discovery PID:', self.dnsDiscoveryPid )
+
 
     def terminate( self ):
         self.cmd( 'sysctl net.ipv4.ip_forward=0' )
         self.cmd( '/opt/smcroute/sbin/smcroutectl -I smcroute-r0 kill' )
+        self.cmd( 'kill %d' % self.dnsDiscoveryPid )
         super( LinuxRouter, self ).terminate()
 
 class EdgeNode( Node ):

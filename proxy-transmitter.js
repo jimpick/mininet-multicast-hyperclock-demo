@@ -24,7 +24,7 @@ const sw = discoverySwarm(swarmDefaults({
   live: true,
   hash: false,
   dns: {
-    server: null, domain: 'dat.local'
+    server: ['192.168.1.1'], domain: 'dat.local'
   },
   stream: () => feed.replicate({live: true})
 }))
@@ -42,7 +42,7 @@ sw.on('connection', function (peer, info) {
 const msw = mswarm(feed, {
   mtu: 900,
   port: 5007,
-  address: '224.1.1.1'
+  address: '239.0.0.1'
 })
 
 feed.on('download', (index, data) => {
